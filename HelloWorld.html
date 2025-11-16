@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      color: rgba(255, 255, 255, 0.7);
+      animation: floatUp 6s linear infinite;
+      font-size: 20px;
+      pointer-events: none;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.7); opacity: 0; }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #ff5d73;
+      padding: 10px 18px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background: white;
+      transform: scale(1.05);
+    }
+
+    .section {
+      display: none;
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+    .active {
+      display: block;
+    }
+    h1 {
+      color: #ff4d6d;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.07);
+    }
+
+    .fav-list, .music-list {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .fav-list li, .music-list li {
+      margin: 12px 0;
+      font-size: 1.1rem;
+    }
+
+    .message-box {
+      background: white;
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      line-height: 1.7;
+      font-size: 1.15rem;
+      color: #444;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Hearts Script -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (20 + Math.random() * 20) + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 700);
+  </script>
+
+  <nav>
+    <a href="#" onclick="showTab('photos')">Her Pictures</a>
+    <a href="#" onclick="showTab('favorites')">Her Favorite Things</a>
+    <a href="#" onclick="showTab('music')">Songs That Remind Me of Her</a>
+    <a href="#" onclick="showTab('message')">Message</a>
+  </nav>
+
+  <!-- Photos Section -->
+  <section id="photos" class="section active">
+    <h1>Her Beautiful Pictures ❤️</h1>
+    <div class="gallery">
+      <img src="" alt="Picture 1" />
+      <img src="" alt="Picture 2" />
+      <img src="" alt="Picture 3" />
+    </div>
+  </section>
+
+  <!-- Favorites Section -->
+  <section id="favorites" class="section">
+    <h1>Her Favorite Things ✨</h1>
+    <ul class="fav-list">
+      <li>• Favorite color: (add later)</li>
+      <li>• Favorite food: (add later)</li>
+      <li>• Favorite hobbies: (add later)</li>
+      <li>• Favorite shows: (add later)</li>
+    </ul>
+  </section>
+
+  <!-- Music Section -->
+  <section id="music" class="section">
+    <h1>Songs That Remind Me of Her 🎵</h1>
+
+    <!-- Embedded YouTube Player -->
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+      <iframe width="350" height="200"
+        src="https://www.youtube.com/embed/-h0D0EpZeLg"
+        title="Gabe Bondoc – If We'd Never Met (Live)"
+        frameborder="0"
+        style="border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);"
+        allow="accelerometer; autoplay; clipboard-write; encrypted‑media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <ul class="music-list">
+      <li>• If We'd Never Met – Gabe Bondoc (Live version)</li>
+      <li>• (Add another song here)</li>
+    </ul>
+  </section>
+
+  <!-- Message Section -->
+  <section id="message" class="section">
+    <h1>A Message From My Heart 💖</h1>
+    <div class="message-box">
+      Write your heartfelt message here…
+    </div>
+  </section>
+
+  <script>
+    function showTab(tab) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(tab).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
