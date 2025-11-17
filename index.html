@@ -17,7 +17,6 @@
       color: #0f3f49;
     }
 
-    /* Floating hearts */
     .heart {
       position: fixed;
       bottom: -20px;
@@ -57,20 +56,6 @@
       transform: scale(1.05);
     }
 
-    .toggle-theme {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      padding: 8px 15px;
-      border: none;
-      border-radius: 12px;
-      background: white;
-      cursor: pointer;
-      font-weight: 600;
-      color: #0f7f75;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
     .section {
       display: none;
       padding: 40px 20px;
@@ -79,13 +64,7 @@
     }
     .active { display: block; }
 
-    h1 {
-      color: #0f7f75;
-    }
-
-    body.dark h1 {
-      color: #83fff3;
-    }
+    h1 { color: #0f7f75; }
 
     .gallery {
       display: flex;
@@ -102,58 +81,39 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       transition: 0.3s;
     }
-    .gallery img:hover {
-      transform: scale(1.07);
-    }
+    .gallery img:hover { transform: scale(1.07); }
 
-    .fav-list, .music-list {
-      max-width: 500px;
-      margin: auto;
-      background: white;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      text-align: left;
-      color: #0f3f49;
+    .masonry { column-count: 4; column-gap: 15px; }
+    .masonry img {
+      width: 100%; margin-bottom: 15px; border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
     }
-
-    body.dark .fav-list, 
-    body.dark .music-list, 
-    body.dark .message-box {
-      background: #145861;
-      color: #d7ffff;
-    }
-
-    .fav-list li, .music-list li {
-      margin: 12px 0;
-      font-size: 1.1rem;
-    }
+    .masonry img:hover { transform: scale(1.05); }
+    @media (max-width:1200px){ .masonry{column-count:3;} }
+    @media (max-width:800px){ .masonry{column-count:2;} }
+    @media (max-width:500px){ .masonry{column-count:1;} }
 
     .message-box {
       background: white;
-      max-width: 600px;
+      max-width: 900px;
       margin: auto;
       padding: 30px;
       border-radius: 25px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       line-height: 1.7;
       font-size: 1.15rem;
-      color: #0f3f49;
-      position: relative;
+      white-space: pre-wrap;
+      min-height: 450px;
     }
 
-    /* Typewriter */
-    .typewriter {
-      overflow: hidden;
-      border-right: 3px solid #0f7f75;
-      white-space: nowrap;
-      animation: typing 4s steps(40) forwards, blink 0.75s step-end infinite;
-      width: 0;
-      display: inline-block;
+    .cursor {
+      border-right: 2px solid #0f7f75;
+      animation: blink 0.8s step-end infinite;
+      display: inline;
     }
-    @keyframes typing { from { width: 0; } to { width: 100%; } }
     @keyframes blink {
-      from, to { border-color: transparent; }
+      0%, 100% { border-color: transparent; }
       50% { border-color: #0f7f75; }
     }
 
@@ -162,47 +122,22 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Splash Screen */
-      #splash {
+    #splash {
       position:fixed; top:0; left:0; width:100%; height:100%;
       background:url('Cover.jpeg') center/cover no-repeat;
-      display:flex; 
-      flex-direction:column; 
-      justify-content:center; 
-      align-items:center;
-      z-index:9999; 
-      transition:opacity 0.7s ease;
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+      z-index:9999; transition:opacity 0.7s ease;
     }
-    #splash h1 { font-size:4rem; }
-    #enterBtn {
-      margin-top:25px;
-      padding:10px 25px;
-      font-size:1.4rem;
-      border:none;
-      border-radius:12px;
-      background:#32b8ac;
-      color:white;
-      cursor:pointer;
-      font-family:'Poppins',sans-serif;
-      box-shadow:0 4px 15px rgba(0,0,0,0.2);
-    }
-    
-    #enterBtn:hover { transform:scale(1.05); }
   </style>
 </head>
 
 <body>
 
-  <!-- Splash Screen -->
   <div id="splash">
-    <h1 class="love-font">Hi Love!</h1>
-    <p class="love-font" style="font-size:2rem;">I made something for you…</p>
-
-    <!-- Enter Button -->
-    <button id="enterBtn">Enter</button>
+    <h1>Hi Love!</h1>
+    <p style="font-size:2rem;">I made something for you…</p>
   </div>
 
-  <!-- Floating Hearts -->
   <script>
     (function(){
       function createHeart() {
@@ -218,7 +153,6 @@
     })();
   </script>
 
-  <!-- NAVIGATION -->
   <nav>
     <a href="#" onclick="showTab('photos')">Her Pictures</a>
     <a href="#" onclick="showTab('favorites')">Her Favorite Things</a>
@@ -226,20 +160,17 @@
     <a href="#" onclick="showTab('message')">Message</a>
   </nav>
 
-  <!-- PHOTOS -->
   <section id="photos" class="section active">
     <h1>Her Beautiful Pictures</h1>
     <div class="gallery">
-      <img src="Picture1.png" alt="Picture 1" />
-      <img src="Picture2.png" alt="Picture 2" />
-      <img src="Picture3.png" alt="Picture 3" />
+      <img src="Picture1.png" />
+      <img src="Picture2.png" />
+      <img src="Picture3.png" />
     </div>
   </section>
 
-  <!-- FAVORITES -->
   <section id="favorites" class="section">
-    <h1>Her Favorite Things</h1>
-
+    <h1>Her favorite things</h1>
     <div class="masonry">
       <img src="Chocolate.jpg">
       <img src="FilipinoFoods.jpg">
@@ -258,22 +189,7 @@
     </div>
   </section>
 
-  <style>
-    .masonry { column-count: 4; column-gap: 15px; }
-    .masonry img {
-      width: 100%; margin-bottom: 15px; border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      transition: transform 0.3s;
-    }
-    .masonry img:hover { transform: scale(1.05); }
-
-    @media (max-width:1200px){ .masonry{column-count:3;} }
-    @media (max-width:800px){ .masonry{column-count:2;} }
-    @media (max-width:500px){ .masonry{column-count:1;} }
-  </style>
-
-  <!-- MUSIC -->
-  <section id="music" class="section">
+ <section id="music" class="section">
     <h1>Songs That Remind Me of Her</h1>
 
     <div style="display: flex; justify-content: center; margin-bottom: 20px;">
@@ -302,58 +218,73 @@
     
   </section>
 
-  <!-- MESSAGE -->
   <section id="message" class="section">
     <h1>A Message From My Heart</h1>
-    <div class="message-box">
-      <div class="typewriter">
-        You're the best part of my life, and I made this just for you.
-      </div>
-    </div>
+    <div class="message-box" id="message-box"></div>
   </section>
 
-  <script>
-    function showTab(tab) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(tab).classList.add('active');
+<script>
+let hasTyped = false;
+
+function showTab(tab) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+
+  if (tab === 'message' && !hasTyped) {
+    startTyping();
+    hasTyped = true;
+  }
+}
+
+(function(){
+  const splash = document.getElementById('splash');
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      splash.style.opacity = 0;
+      setTimeout(() => splash.style.display = 'none', 700);
+    }, 5000);
+  });
+})();
+
+function startTyping() {
+  const message = `Hi love! One shot lang toh while typing this kase gusto ko authentic HAHAHA.
+I just wanted to say thank you for being the kindest, most understanding, and loving partner... 
+And you being the first that I truly committed and love makes it perfect. 
+Alam mo ba never ko inasahan na mangyari toh this year like nagulat talaga ako. Kase because i really thought 
+talaga na i will cherish this friendship with you forever because you stayed. I was so used of having friends on 
+the fly ever since. If hindi ako yung una mag-aapproach wala haha i will just fly and fly away from them. Ikaw lang 
+ever since talaga nag approach saaken even though kahit wala nako contact talaga sa AUF haha… Natatakot nga ako 
+non na what if bigla nalang natapos ung pag uupdate mo saaken nung umalis ako dyan. Pero hinde, you’re always there 
+messaging and updating me on what is happening sa life mo. I think dun na develop na or kumbaga nag “slow burn” na 
+feelings ko sayo HAHAHA.. I didn’t want to admit at first na nagugustahan na kita non. Kaya i was so scared what 
+if nag confess ako HAHAHA.. Takot ko non is what if sabihin mo busy ka ganyan. Alam mo ba first nahalata ko na sa 
+sarili na gusto kita nung nag message ka saaken about sa bad encounter mo sa patient habang kasama mo si Geovel 
+HAHAHAHAHAHA.. Nag selos ako non tapos inisip ko “kung ako lang don i couldve handled the situation.” Pero yeah HAHAHA, 
+oh diba matagal ayaw ko lang iadmit.. But now, you’re the first person in my life that I look forward to being with everyday. 
+This is just the start of our relationship but it already feels forever because of your love for me. Thank you so much Dhanes, 
+ikaw ang gusto kong makasama hanggang sa pagtanda <3 I love you so much..`;
+
+  const box = document.getElementById('message-box');
+  let i = 0;
+  const speed = 80;
+
+  const cursor = document.createElement('span');
+  cursor.classList.add('cursor');
+  cursor.textContent = ' ';
+  box.appendChild(cursor);
+
+  function type() {
+    if (i < message.length) {
+      cursor.insertAdjacentText('beforebegin', message.charAt(i));
+      i++;
+      setTimeout(type, speed);
+    } else {
+      cursor.remove();
     }
-
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-    }
-
-    (function() {
-      const unlockBtn = document.getElementById('unlockBtn');
-      const splash = document.getElementById('splash');
-      const pwError = document.getElementById('pwError');
-
-      if (unlockBtn) {
-        unlockBtn.addEventListener('click', () => {
-          const input = document.getElementById('pwInput').value;
-          const correct = "iloveyou";
-          if (input === correct) {
-            splash.style.opacity = 0;
-            setTimeout(() => splash.style.display = 'none', 700);
-            pwError.style.display = 'none';
-          } else {
-            pwError.style.display = 'block';
-          }
-        });
-      }
-
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          splash.style.opacity = 0;
-          setTimeout(() => splash.style.display = 'none', 700);
-        }, 5000);
-      });
-    })();
-
-    (function() {
-      const typeEl = document.querySelector('.typewriter');
-      if (typeEl) setTimeout(() => { typeEl.style.width = '100%'; }, 200);
-    })();
-  </script>
+  }
+  type();
+}
+</script>
 
 </body>
 </html>
