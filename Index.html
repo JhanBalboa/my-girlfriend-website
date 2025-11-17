@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy3rdMonthsaryWOOHOOO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #7be0d8, #b8fff9);
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background 0.5s ease, color 0.5s ease;
+      color: #0f3f49;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      color: rgba(125, 255, 245, 0.8);
+      animation: floatUp 6s linear infinite;
+      font-size: 20px;
+      pointer-events: none;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.7); opacity: 0; }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      background: rgba(255,255,255,0.45);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-radius: 0 0 20px 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #0f7f75;
+      padding: 10px 18px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background: white;
+      transform: scale(1.05);
+    }
+
+    .toggle-theme {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 12px;
+      background: white;
+      cursor: pointer;
+      font-weight: 600;
+      color: #0f7f75;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .section {
+      display: none;
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+    .active { display: block; }
+
+    h1 {
+      color: #0f7f75;
+    }
+
+    body.dark h1 {
+      color: #83fff3;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .gallery img {
+      width: 530px;
+      height: 530px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.07);
+    }
+
+    .fav-list, .music-list {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: left;
+      color: #0f3f49;
+    }
+
+    body.dark .fav-list, 
+    body.dark .music-list, 
+    body.dark .message-box {
+      background: #145861;
+      color: #d7ffff;
+    }
+
+    .fav-list li, .music-list li {
+      margin: 12px 0;
+      font-size: 1.1rem;
+    }
+
+    .message-box {
+      background: white;
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      line-height: 1.7;
+      font-size: 1.15rem;
+      color: #0f3f49;
+      position: relative;
+    }
+
+    /* Typewriter */
+    .typewriter {
+      overflow: hidden;
+      border-right: 3px solid #0f7f75;
+      white-space: nowrap;
+      animation: typing 4s steps(40) forwards, blink 0.75s step-end infinite;
+      width: 0;
+      display: inline-block;
+    }
+    @keyframes typing { from { width: 0; } to { width: 100%; } }
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: #0f7f75; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Splash Screen */
+      #splash {
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:url('Cover.jpeg') center/cover no-repeat;
+      display:flex; 
+      flex-direction:column; 
+      justify-content:center; 
+      align-items:center;
+      z-index:9999; 
+      transition:opacity 0.7s ease;
+    }
+    #splash h1 { font-size:4rem; }
+    #enterBtn {
+      margin-top:25px;
+      padding:10px 25px;
+      font-size:1.4rem;
+      border:none;
+      border-radius:12px;
+      background:#32b8ac;
+      color:white;
+      cursor:pointer;
+      font-family:'Poppins',sans-serif;
+      box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    #enterBtn:hover { transform:scale(1.05); }
+  </style>
+</head>
+
+<body>
+
+  <!-- Splash Screen -->
+  <div id="splash">
+    <h1 class="love-font">Hi Love!</h1>
+    <p class="love-font" style="font-size:2rem;">I made something for you…</p>
+
+    <!-- Enter Button -->
+    <button id="enterBtn">Enter</button>
+  </div>
+
+  <!-- Floating Hearts -->
+  <script>
+    (function(){
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.textContent = "i love you💙";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (20 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+      setInterval(createHeart, 700);
+    })();
+  </script>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#" onclick="showTab('photos')">Her Pictures</a>
+    <a href="#" onclick="showTab('favorites')">Her Favorite Things</a>
+    <a href="#" onclick="showTab('music')">Songs</a>
+    <a href="#" onclick="showTab('message')">Message</a>
+  </nav>
+
+  <!-- PHOTOS -->
+  <section id="photos" class="section active">
+    <h1>Her Beautiful Pictures</h1>
+    <div class="gallery">
+      <img src="Picture1.png" alt="Picture 1" />
+      <img src="Picture2.png" alt="Picture 2" />
+      <img src="Picture3.png" alt="Picture 3" />
+    </div>
+  </section>
+
+  <!-- FAVORITES -->
+  <section id="favorites" class="section">
+    <h1>Her Favorite Things</h1>
+
+    <div class="masonry">
+      <img src="Chocolate.jpg">
+      <img src="FilipinoFoods.jpg">
+      <img src="Gulay.jpg">
+      <img src="KT1.jpg">
+      <img src="KT2.jpg">
+      <img src="KT3.jpg">
+      <img src="Muichiro.jpg">
+      <img src="Muichiro2.jpg">
+      <img src="Muichiro3.jpg">
+      <img src="Neuvi1.jpg">
+      <img src="Neuvi2.jpg">
+      <img src="Neuvi3.jpg">
+      <img src="SG.jpg">
+      <img src="Me.jpg">
+    </div>
+  </section>
+
+  <style>
+    .masonry { column-count: 4; column-gap: 15px; }
+    .masonry img {
+      width: 100%; margin-bottom: 15px; border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+    .masonry img:hover { transform: scale(1.05); }
+
+    @media (max-width:1200px){ .masonry{column-count:3;} }
+    @media (max-width:800px){ .masonry{column-count:2;} }
+    @media (max-width:500px){ .masonry{column-count:1;} }
+  </style>
+
+  <!-- MUSIC -->
+  <section id="music" class="section">
+    <h1>Songs That Remind Me of Her</h1>
+
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+      <iframe width="350" height="200"
+        src="https://www.youtube.com/watch?v=43JADIniv_4"
+        frameborder="0"
+        style="border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);"
+        allowfullscreen></iframe>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+      <iframe width="350" height="200"
+        src="https://www.youtube.com/watch?v=SCAcnetLLsU"
+        frameborder="0"
+        style="border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);"
+        allowfullscreen></iframe>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+      <iframe width="350" height="200"
+        src="https://www.youtube.com/watch?v=YYlSa4M2zzM"
+        frameborder="0"
+        style="border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);"
+        allowfullscreen></iframe>
+    </div>
+    
+  </section>
+
+  <!-- MESSAGE -->
+  <section id="message" class="section">
+    <h1>A Message From My Heart</h1>
+    <div class="message-box">
+      <div class="typewriter">
+        You're the best part of my life, and I made this just for you.
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function showTab(tab) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(tab).classList.add('active');
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
+
+    (function() {
+      const unlockBtn = document.getElementById('unlockBtn');
+      const splash = document.getElementById('splash');
+      const pwError = document.getElementById('pwError');
+
+      if (unlockBtn) {
+        unlockBtn.addEventListener('click', () => {
+          const input = document.getElementById('pwInput').value;
+          const correct = "iloveyou";
+          if (input === correct) {
+            splash.style.opacity = 0;
+            setTimeout(() => splash.style.display = 'none', 700);
+            pwError.style.display = 'none';
+          } else {
+            pwError.style.display = 'block';
+          }
+        });
+      }
+
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          splash.style.opacity = 0;
+          setTimeout(() => splash.style.display = 'none', 700);
+        }, 5000);
+      });
+    })();
+
+    (function() {
+      const typeEl = document.querySelector('.typewriter');
+      if (typeEl) setTimeout(() => { typeEl.style.width = '100%'; }, 200);
+    })();
+  </script>
+
+</body>
+</html>
