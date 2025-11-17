@@ -96,7 +96,7 @@
 
     .message-box {
       background: white;
-      max-width: 900px;
+      max-width: 1200px;
       margin: auto;
       padding: 30px;
       border-radius: 25px;
@@ -128,14 +128,16 @@
       display:flex; flex-direction:column; justify-content:center; align-items:center;
       z-index:9999; transition:opacity 0.7s ease;
     }
+
   </style>
 </head>
 
 <body>
-
   <div id="splash">
+    
     <h1>Hi Love!</h1>
     <p style="font-size:2rem;">I made something for you…</p>
+
   </div>
 
   <script>
@@ -143,7 +145,7 @@
       function createHeart() {
         const heart = document.createElement("div");
         heart.classList.add("heart");
-        heart.textContent = "i love you💙";
+        heart.textContent = "💙";
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.fontSize = (20 + Math.random() * 20) + "px";
         document.body.appendChild(heart);
@@ -189,34 +191,44 @@
     </div>
   </section>
 
- <section id="music" class="section">
-    <h1>Songs That Remind Me of Her</h1>
+<section id="music" class="section">
+  <h1>Songs That Remind Me of Her</h1>
 
-    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-      <iframe width="350" height="200"
-        src="https://www.youtube.com/watch?v=43JADIniv_4"
-        frameborder="0"
-        style="border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);"
-        allowfullscreen></iframe>
-    </div>
+  <div style="
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 20px;
+    margin-top: 20px;
+  ">
+    <iframe style="border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.15);" 
+      src="https://open.spotify.com/embed/track/5erH5r100PHxQGTWNUrxqo?utm_source=generator" 
+      width="350" 
+      height="400" 
+      frameborder="0" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>
 
-    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-      <iframe width="350" height="200"
-        src="https://www.youtube.com/watch?v=SCAcnetLLsU"
-        frameborder="0"
-        style="border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);"
-        allowfullscreen></iframe>
-    </div>
+    <iframe style="border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.15);" 
+      src="https://open.spotify.com/embed/track/36vmaZyO0iAE6FZ7287fg2?utm_source=generator" 
+      width="350" 
+      height="400" 
+      frameborder="0" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>
 
-    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-      <iframe width="350" height="200"
-        src="https://www.youtube.com/watch?v=YYlSa4M2zzM"
-        frameborder="0"
-        style="border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);"
-        allowfullscreen></iframe>
-    </div>
-    
-  </section>
+    <iframe style="border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.15);" 
+      src="https://open.spotify.com/embed/track/1o0gZHVYYaGCRnmxoPN7mY?utm_source=generator" 
+      width="350" 
+      height="400" 
+      frameborder="0" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
 
   <section id="message" class="section">
     <h1>A Message From My Heart</h1>
@@ -259,14 +271,14 @@ messaging and updating me on what is happening sa life mo. I think dun na develo
 feelings ko sayo HAHAHA.. I didn’t want to admit at first na nagugustahan na kita non. Kaya i was so scared what 
 if nag confess ako HAHAHA.. Takot ko non is what if sabihin mo busy ka ganyan. Alam mo ba first nahalata ko na sa 
 sarili na gusto kita nung nag message ka saaken about sa bad encounter mo sa patient habang kasama mo si Geovel 
-HAHAHAHAHAHA.. Nag selos ako non tapos inisip ko “kung ako lang don i couldve handled the situation.” Pero yeah HAHAHA, 
-oh diba matagal ayaw ko lang iadmit.. But now, you’re the first person in my life that I look forward to being with everyday. 
-This is just the start of our relationship but it already feels forever because of your love for me. Thank you so much Dhanes, 
-ikaw ang gusto kong makasama hanggang sa pagtanda <3 I love you so much..`;
+HAHAHAHAHAHA.. Nag selos ako non tapos inisip ko “kung ako lang nandon.” Pero yeah HAHAHA, 
+oh diba matagal na kita gusto ayaw ko lang iadmit.. But now, you’re the first person in my life that I look forward to being with everyday. 
+This is just the start of our relationship but it already feels forever. Thank you so much Dhanes, ikaw ang gusto kong makasama hanggang 
+sa pagtanda <3 I love you so much..`;
 
   const box = document.getElementById('message-box');
   let i = 0;
-  const speed = 80;
+  const speed = 70;
 
   const cursor = document.createElement('span');
   cursor.classList.add('cursor');
